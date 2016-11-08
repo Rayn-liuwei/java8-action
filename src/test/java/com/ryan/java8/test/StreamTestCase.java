@@ -11,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.joining;
+
 /**
  * @author Rayn
  * @email liuwei412552703@163.com
@@ -96,6 +98,27 @@ public class StreamTestCase {
 
         LOG.info("Count : {}", count);
 
+
+    }
+
+    /**
+     * 收集器 测试
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testCollectors() throws Exception {
+        Collectors.maxBy(Comparator.comparingInt(UserEntity::getSex));
+
+        Optional<UserEntity> collect = users.stream().collect(Collectors.maxBy(Comparator.comparing(UserEntity::getSex)));
+        System.out.println(collect.get().getUsername());
+
+        Integer summingInt = users.stream().collect(Collectors.summingInt(UserEntity::getSex));
+
+
+        //链接字符串
+        String joinStr = users.stream().map(UserEntity::getUsername).collect(joining(",,, "));
+        System.out.println(joinStr);
 
     }
 
