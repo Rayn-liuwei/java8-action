@@ -3,6 +3,8 @@ package com.ryan.java8.test;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +14,8 @@ import java.util.concurrent.TimeUnit;
  * Created by Rayn on 2016/11/7 13:13.
  */
 public class CaffeineTestCase {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CaffeineTestCase.class);
 
     /**
      *
@@ -24,6 +28,25 @@ public class CaffeineTestCase {
                 .expireAfterWrite(5, TimeUnit.MINUTES)
                 .refreshAfterWrite(1, TimeUnit.MINUTES)
                 .build();
+
+    }
+
+    /**
+     * 位计算测试
+     * @throws Exception
+     */
+    @Test
+    public void testBitCompute() throws Exception {
+        int a = 100;
+        int b = 110;
+
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        LOG.info("a = {} : b = {} ", a, b);
+
+        LOG.info("a ^ b = {}", a ^ b);
+        LOG.info("(a ^ b ) ^ a = {}", (a ^ b) ^ a);
 
     }
 }
