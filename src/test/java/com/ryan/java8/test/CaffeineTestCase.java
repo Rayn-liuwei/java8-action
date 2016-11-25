@@ -37,8 +37,14 @@ public class CaffeineTestCase {
      */
     @Test
     public void testBitCompute() throws Exception {
-        int a = 100;
-        int b = 110;
+        Integer a = 100;
+        Integer b = 100;
+
+        Integer c = 1000;
+        Integer d = 1000;
+
+        System.out.println(a == b);
+        System.out.println(c == d);
 
         a = a ^ b;
         b = a ^ b;
